@@ -33,6 +33,45 @@ body {
         url(../img/hero.jpg);/* order matters - first gradient then bg image */
     background-size: cover;
     background-position: top; /*bottom, center*/
+    position: relative;
+
     /*Use clippy for making clip-paths*/
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+}
+
+.logo-box {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+}
+
+.logo {
+    /* Width will adjust automatically. We would have adjusted width and height would have adjusted automatically */
+    height: 35px
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 14.4px;
 }
