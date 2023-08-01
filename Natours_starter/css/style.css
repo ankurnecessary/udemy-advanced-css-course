@@ -128,6 +128,17 @@ This was just to show that animtions could be used on hover of an element too
     }
 }
 
+@keyframes moveInBottom {
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
 /*
 :link - initial state of the button
 :visited - We have already clicked the button
@@ -143,6 +154,7 @@ This was just to show that animtions could be used on hover of an element too
     display: inline-block;
     border-radius: 100px;
     transition: all .2s;
+    position: relative; /* To position .btn-white:after below .btn  */
 }
 
 .btn:hover {
@@ -158,4 +170,31 @@ This was just to show that animtions could be used on hover of an element too
 .btn-white {
     background-color: #fff;
     color:#777;
+}
+
+.btn::after {
+    content: ''; /* this attribute is mandatory for :after or :before, otherwise it will not be visible on the screen */
+    display: inline-block; /* Keep it same as original .btn:link */
+    width: 100%; /*This will take the whole width of .btn:link*/
+    height: 100%; /*This will take the whole height of .btn:link*/
+    border-radius: 100px; /* copied it from .btn:link */
+    transition: all .6s;
+}
+
+.btn-white:after {
+    background-color: #fff;
+    position: absolute; /* To position it below .btn:link */
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.btn:hover::after { /*this declaration will affect .btn:after when .btn is hovered*/
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards; /* It will apply the 0% state of moveInBottom animation to the .btn*/
 }
