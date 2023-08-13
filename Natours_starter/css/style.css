@@ -37,6 +37,24 @@ We are not always going to use all the folders. It depends on the scope and size
 */
 
 /*
+SASS CSS-Preprocessor
+
+Various parts of SASS
+
+1. Variables - for reuseable values such a color, font-sizes, spacing etc.
+2. Nesting - to nest selectors inside of one another, allowing us to write less code.
+3. Operators - for mathematical operations right inside of CSS.
+4. Partials and imports - to write CSS in different files and importing them all into one single file.
+5. Mixins - to write reuseable pieces of CSS code
+6. Functions - similar to mixins, with the difference that they produce a value that can then be used.
+7. Extends - to make different selectors inherit declarations that are common to all of them.
+8. Control Directives - for writing complex code using conditionals and loops (not covered in this course). It is used for writing CSS frameworks.
+
+There are 2 syntax of SASS. One is .sass and other is .scss. We will use .scss.
+
+*/
+
+/*
 COLORS:
 
 Light green: #7ed56f
