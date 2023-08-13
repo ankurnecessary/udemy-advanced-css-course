@@ -16,6 +16,27 @@ Modifier - A different version of a block or an element.
 */
 
 /*
+
+CSS Architecture means specifying logical folder structure for defining CSS rules. We will use 7-1 pattern for CSS architecture.
+
+The 7-1 Pattern
+7 different folders for partial SASS files.
+1 main SASS file to import all other files into a compiled CSS stylesheet.
+
+The 7 folders are:
+1. base/ - Basic project definition
+2. components/ - Here we have one file for each component
+3. layout/ - Here we define overall layout of the project
+4. pages/ - Here we have styles for specific pages of the project
+5. themes/ - Here we could define different visual themes
+6. abstracts/ - Here we put code that doesn't output any CSS like variables, mixins etc.
+7. vendors/ - All 3rd party CSS goes in this folder
+
+We are not always going to use all the folders. It depends on the scope and size of the project.
+
+*/
+
+/*
 COLORS:
 
 Light green: #7ed56f
