@@ -10,7 +10,11 @@ Dark green: #28b485
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
+  /*
+    "box-sizing: inherit" will inherit the value of the "box-sizing" property from it's partent and in body{} we declared "box-sizing: border-box". Now all the elements which are immediate children of body will inherit box-sizing value from body{} and their children will inherit from them. And in this way all the elements will get the "border-box" as the value of "box-sizing" property.
+  */
+  box-sizing: inherit;
 }
 
 html {
@@ -34,6 +38,7 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 3rem;
+  box-sizing: border-box;
 }
 
 .header {
