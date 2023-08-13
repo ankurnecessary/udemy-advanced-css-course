@@ -1,4 +1,21 @@
 /*
+
+BEM - Block Element Modifier 
+
+Following BEM gives us better selectors for the css declarations.
+
+Block - Standalone component that is meaningful on its own
+Element - Part of a block that has no standalone meaning
+Modifier - A different version of a block or an element.
+
+.block{}
+.block__element{}
+.block__element--modifier{}
+.block--modifier{}
+
+*/
+
+/*
 COLORS:
 
 Light green: #7ed56f
@@ -58,13 +75,13 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   left: 4rem;
   top: 4rem;
 }
 
-.logo {
+.header__logo {
   /* Width will adjust automatically. We would have adjusted width and height would have adjusted automatically */
   height: 3.5rem
 }
@@ -75,7 +92,7 @@ This was just to show that animtions could be used on hover of an element too
     animation: moveInRight 3s ease-out;
 } */
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -92,7 +109,7 @@ This was just to show that animtions could be used on hover of an element too
   /* To fix shakyness in the animation */
 }
 
-.heading-primary-main {
+.heading-primary--main {
   display: block;
   font-size: 6rem;
   font-weight: 400;
@@ -107,7 +124,7 @@ This was just to show that animtions could be used on hover of an element too
     */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
@@ -195,7 +212,7 @@ This was just to show that animtions could be used on hover of an element too
   box-shadow: 0 1rem .6rem rgba(0, 0, 0, .2);
 }
 
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
@@ -214,7 +231,7 @@ This was just to show that animtions could be used on hover of an element too
   transition: all .6s;
 }
 
-.btn-white:after {
+.btn--white:after {
   background-color: #fff;
   position: absolute;
   /* To position it below .btn:link */
@@ -229,7 +246,7 @@ This was just to show that animtions could be used on hover of an element too
   opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInBottom .5s ease-out .75s;
   animation-fill-mode: backwards;
   /* It will apply the 0% state of moveInBottom animation to the .btn*/
