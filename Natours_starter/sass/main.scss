@@ -14,6 +14,7 @@ Modifier - A different version of a block or an element.
 .block--modifier{}
 
 */
+
 /*
 
 CSS Architecture means specifying logical folder structure for defining CSS rules. We will use 7-1 pattern for CSS architecture.
@@ -34,6 +35,7 @@ The 7 folders are:
 We are not always going to use all the folders. It depends on the scope and size of the project.
 
 */
+
 /*
 SASS CSS-Preprocessor
 
@@ -51,13 +53,24 @@ Various parts of SASS
 There are 2 syntax of SASS. One is .sass and other is .scss. We will use .scss.
 
 */
+
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-grey-dark: #777;
+$color-white: #fff;
+$color-black: #000;
+
 * {
   margin: 0;
   padding: 0;
+
   /*
     "box-sizing: inherit" will inherit the value of the "box-sizing" property from it's partent and in body{} we declared "box-sizing: border-box". Now all the elements which are immediate children of body will inherit box-sizing value from body{} and their children will inherit from them. And in this way all the elements will get the "border-box" as the value of "box-sizing" property.
   */
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   /* 
@@ -70,101 +83,142 @@ html {
   font-size: 62.5%;
   /*
     Now we will convert all the pixel based figures to rem based figures where 1rem = 10px. This practice will help us in re-setting the font-size when we deal with media-queries for other screen sizes and when the font-size will change respective rem figures will also change accordingly. This will make easier for us to make changes in dimensions via font-size of html element in media-queries.
-    */ }
+    */
+}
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.7;
-  color: #777;
+  color: $color-grey-dark;
   padding: 3rem;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
   /* order matters - first gradient then bg image (top to bottom) */
   background-size: cover;
   background-position: top;
   /*bottom, center*/
   position: relative;
+
   /*Use clippy for making clip-paths*/
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); }
-  .header__logo-box {
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+  &__logo-box {
     position: absolute;
     left: 4rem;
-    top: 4rem; }
-  .header__logo {
+    top: 4rem;
+  }
+
+  &__logo {
     /* Width will adjust automatically. We would have adjusted width and height would have adjusted automatically */
-    height: 3.5rem; }
-  .header__text-box {
+    height: 3.5rem;
+  }
+
+  &__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center; }
+    text-align: center;
+  }
+}
 
 /* 
 This was just to show that animtions could be used on hover of an element too
 .logo:hover {
     animation: moveInRight 3s ease-out;
 } */
+
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
   margin-bottom: 6rem;
+
   backface-visibility: hidden;
-  /* To fix shakyness in the animation */ }
-  .heading-primary--main {
+  /* To fix shakyness in the animation */
+
+  &--main {
     display: block;
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
+
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
     /*
     animation-iteration-count: 3; // Number of times animation should happen
     animation-delay: 3s; // Time to wait before animation takes place
-    */ }
-  .heading-primary--sub {
+    */
+  }
+
+  &--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1.45rem;
+
     /* animation-name: moveInRight;
     animation-duration: 1s;
     animation-timing-function: ease-out; */
-    animation: moveInRight 1s ease-out; }
+
+    animation: moveInRight 1s ease-out;
+  }
+}
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
+
   80% {
-    transform: translateX(1rem); }
+    transform: translateX(1rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
+
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(3rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 /*
 :link - initial state of the button
@@ -172,55 +226,69 @@ This was just to show that animtions could be used on hover of an element too
 :hover - when user take mouse over and out of the element
 :active - mouse down state of the button
 */
-.btn:link, .btn:visited {
-  text-transform: capitalize;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all 0.2s;
-  position: relative;
-  /* To position .btn-white:after below .btn  */ }
 
-.btn:hover {
-  transform: translateY(-0.3rem);
-  /* Moves -3px in respect to :link state */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:hover::after {
-    /*this declaration will affect .btn:after when .btn is hovered*/
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0; }
+.btn {
+  &:link,
+  &:visited {
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    /* To position .btn-white:after below .btn  */
+  }
 
-.btn:active {
-  transform: translateY(-0.1rem);
-  /* Moves -3px in respect to :link state */
-  box-shadow: 0 1rem 0.6rem rgba(0, 0, 0, 0.2); }
+  &:hover {
+    transform: translateY(-0.3rem);
+    /* Moves -3px in respect to :link state */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
 
-.btn::after {
-  content: "";
-  /* this attribute is mandatory for :after or :before, otherwise it will not be visible on the screen */
-  display: inline-block;
-  /* Keep it same as original .btn:link */
-  width: 100%;
-  /*This will take the whole width of .btn:link*/
-  height: 100%;
-  /*This will take the whole height of .btn:link*/
-  border-radius: 10rem;
-  /* copied it from .btn:link */
-  transition: all 0.6s; }
+    &::after {
+      /*this declaration will affect .btn:after when .btn is hovered*/
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
 
-.btn--animated {
-  animation: moveInBottom 0.5s ease-out 0.75s;
-  animation-fill-mode: backwards;
-  /* It will apply the 0% state of moveInBottom animation to the .btn*/ }
+  &:active {
+    transform: translateY(-0.1rem);
+    /* Moves -3px in respect to :link state */
+    box-shadow: 0 1rem 0.6rem rgba($color-black, 0.2);
+  }
 
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-  .btn--white:after {
-    background-color: #fff;
-    position: absolute;
-    /* To position it below .btn:link */
-    top: 0;
-    left: 0;
-    z-index: -1; }
+  &::after {
+    content: "";
+    /* this attribute is mandatory for :after or :before, otherwise it will not be visible on the screen */
+    display: inline-block;
+    /* Keep it same as original .btn:link */
+    width: 100%;
+    /*This will take the whole width of .btn:link*/
+    height: 100%;
+    /*This will take the whole height of .btn:link*/
+    border-radius: 10rem;
+    /* copied it from .btn:link */
+    transition: all 0.6s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+    /* It will apply the 0% state of moveInBottom animation to the .btn*/
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &:after {
+      background-color: $color-white;
+      position: absolute;
+      /* To position it below .btn:link */
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+}
