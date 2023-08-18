@@ -1,0 +1,29 @@
+// If we want to add a file as a partial that could be imported later on, then we have to name it in a way that it should start with underscore.
+
+* {
+  margin: 0;
+  padding: 0;
+
+  /*
+    "box-sizing: inherit" will inherit the value of the "box-sizing" property from it's partent and in body{} we declared "box-sizing: border-box". Now all the elements which are immediate children of body will inherit box-sizing value from body{} and their children will inherit from them. And in this way all the elements will get the "border-box" as the value of "box-sizing" property.
+  */
+  box-sizing: inherit;
+}
+
+html {
+  /* 
+    1. Default font-size of a browser is 16px and we want to set it to 10px.
+    2. One way is to set the font-size: 10px directly. In this way we will take away the users capability to increase the font-size from browser's font-size settings.
+    3. So we could use percentage to set the font-size here.
+    4. Here font-size: 100% means 16px.
+    5. Then font-size: ((10/16) * 100)% will mean 10px. Ultimately, font-size: 62.5% will set the default font-size to 10px. And in this way a user could change the font-size via browser settings.
+    */
+  font-size: 62.5%; // This defines what 1rem is
+  /*
+    Now we will convert all the pixel based figures to rem based figures where 1rem = 10px. This practice will help us in re-setting the font-size when we deal with media-queries for other screen sizes and when the font-size will change respective rem figures will also change accordingly. This will make easier for us to make changes in dimensions via font-size of html element in media-queries.
+    */
+}
+
+body {
+  box-sizing: border-box;
+}

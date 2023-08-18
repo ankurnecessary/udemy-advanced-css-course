@@ -1,143 +1,3 @@
-/*
-
-BEM - Block Element Modifier 
-
-Following BEM gives us better selectors for the css declarations.
-
-Block - Standalone component that is meaningful on its own
-Element - Part of a block that has no standalone meaning
-Modifier - A different version of a block or an element.
-
-.block{}
-.block__element{}
-.block__element--modifier{}
-.block--modifier{}
-
-*/
-/*
-
-CSS Architecture means specifying logical folder structure for defining CSS rules. We will use 7-1 pattern for CSS architecture.
-
-The 7-1 Pattern
-7 different folders for partial SASS files.
-1 main SASS file to import all other files into a compiled CSS stylesheet.
-
-The 7 folders are:
-1. base/ - Basic project definition
-2. components/ - Here we have one file for each component
-3. layout/ - Here we define overall layout of the project
-4. pages/ - Here we have styles for specific pages of the project
-5. themes/ - Here we could define different visual themes
-6. abstracts/ - Here we put code that doesn't output any CSS like variables, mixins etc.
-7. vendors/ - All 3rd party CSS goes in this folder
-
-We are not always going to use all the folders. It depends on the scope and size of the project.
-
-*/
-/*
-SASS CSS-Preprocessor
-
-Various parts of SASS
-
-1. Variables - for reuseable values such a color, font-sizes, spacing etc.
-2. Nesting - to nest selectors inside of one another, allowing us to write less code.
-3. Operators - for mathematical operations right inside of CSS.
-4. Partials and imports - to write CSS in different files and importing them all into one single file.
-5. Mixins - to write reuseable pieces of CSS code
-6. Functions - similar to mixins, with the difference that they produce a value that can then be used.
-7. Extends - to make different selectors inherit declarations that are common to all of them.
-8. Control Directives - for writing complex code using conditionals and loops (not covered in this course). It is used for writing CSS frameworks.
-
-There are 2 syntax of SASS. One is .sass and other is .scss. We will use .scss.
-
-*/
-* {
-  margin: 0;
-  padding: 0;
-  /*
-    "box-sizing: inherit" will inherit the value of the "box-sizing" property from it's partent and in body{} we declared "box-sizing: border-box". Now all the elements which are immediate children of body will inherit box-sizing value from body{} and their children will inherit from them. And in this way all the elements will get the "border-box" as the value of "box-sizing" property.
-  */
-  box-sizing: inherit; }
-
-html {
-  /* 
-    1. Default font-size of a browser is 16px and we want to set it to 10px.
-    2. One way is to set the font-size: 10px directly. In this way we will take away the users capability to increase the font-size from browser's font-size settings.
-    3. So we could use percentage to set the font-size here.
-    4. Here font-size: 100% means 16px.
-    5. Then font-size: ((10/16) * 100)% will mean 10px. Ultimately, font-size: 62.5% will set the default font-size to 10px. And in this way a user could change the font-size via browser settings.
-    */
-  font-size: 62.5%;
-  /*
-    Now we will convert all the pixel based figures to rem based figures where 1rem = 10px. This practice will help us in re-setting the font-size when we deal with media-queries for other screen sizes and when the font-size will change respective rem figures will also change accordingly. This will make easier for us to make changes in dimensions via font-size of html element in media-queries.
-    */ }
-
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem;
-  box-sizing: border-box; }
-
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  /* order matters - first gradient then bg image (top to bottom) */
-  background-size: cover;
-  background-position: top;
-  /*bottom, center*/
-  position: relative;
-  /*Use clippy for making clip-paths*/
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); }
-  .header__logo-box {
-    position: absolute;
-    left: 4rem;
-    top: 4rem; }
-  .header__logo {
-    /* Width will adjust automatically. We would have adjusted width and height would have adjusted automatically */
-    height: 3.5rem; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center; }
-
-/* 
-This was just to show that animtions could be used on hover of an element too
-.logo:hover {
-    animation: moveInRight 3s ease-out;
-} */
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  margin-bottom: 6rem;
-  backface-visibility: hidden;
-  /* To fix shakyness in the animation */ }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    /*
-    animation-iteration-count: 3; // Number of times animation should happen
-    animation-delay: 3s; // Time to wait before animation takes place
-    */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.45rem;
-    /* animation-name: moveInRight;
-    animation-duration: 1s;
-    animation-timing-function: ease-out; */
-    animation: moveInRight 1s ease-out; }
-
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -165,6 +25,66 @@ This was just to show that animtions could be used on hover of an element too
   100% {
     opacity: 1;
     transform: translate(0); } }
+
+* {
+  margin: 0;
+  padding: 0;
+  /*
+    "box-sizing: inherit" will inherit the value of the "box-sizing" property from it's partent and in body{} we declared "box-sizing: border-box". Now all the elements which are immediate children of body will inherit box-sizing value from body{} and their children will inherit from them. And in this way all the elements will get the "border-box" as the value of "box-sizing" property.
+  */
+  box-sizing: inherit; }
+
+html {
+  /* 
+    1. Default font-size of a browser is 16px and we want to set it to 10px.
+    2. One way is to set the font-size: 10px directly. In this way we will take away the users capability to increase the font-size from browser's font-size settings.
+    3. So we could use percentage to set the font-size here.
+    4. Here font-size: 100% means 16px.
+    5. Then font-size: ((10/16) * 100)% will mean 10px. Ultimately, font-size: 62.5% will set the default font-size to 10px. And in this way a user could change the font-size via browser settings.
+    */
+  font-size: 62.5%;
+  /*
+    Now we will convert all the pixel based figures to rem based figures where 1rem = 10px. This practice will help us in re-setting the font-size when we deal with media-queries for other screen sizes and when the font-size will change respective rem figures will also change accordingly. This will make easier for us to make changes in dimensions via font-size of html element in media-queries.
+    */ }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  backface-visibility: hidden;
+  /* To fix shakyness in the animation */ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*
+    animation-iteration-count: 3; // Number of times animation should happen
+    animation-delay: 3s; // Time to wait before animation takes place
+    */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.45rem;
+    /* animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; */
+    animation: moveInRight 1s ease-out; }
 
 /*
 :link - initial state of the button
@@ -224,3 +144,104 @@ This was just to show that animtions could be used on hover of an element too
     top: 0;
     left: 0;
     z-index: -1; }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  /* order matters - first gradient then bg image (top to bottom) */
+  background-size: cover;
+  background-position: top;
+  /*bottom, center*/
+  position: relative;
+  /*Use clippy for making clip-paths*/
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    left: 4rem;
+    top: 4rem; }
+  .header__logo {
+    /* Width will adjust automatically. We would have adjusted width and height would have adjusted automatically */
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+
+/*
+
+BEM - Block Element Modifier 
+
+Following BEM gives us better selectors for the css declarations.
+
+Block - Standalone component that is meaningful on its own
+Element - Part of a block that has no standalone meaning
+Modifier - A different version of a block or an element.
+
+.block{}
+.block__element{}
+.block__element--modifier{}
+.block--modifier{}
+
+*/
+/*
+
+CSS Architecture means specifying logical folder structure for defining CSS rules. We will use 7-1 pattern for CSS architecture.
+
+The 7-1 Pattern
+7 different folders for partial SASS files.
+1 main SASS file to import all other files into a compiled CSS stylesheet.
+
+The 7 folders are:
+1. base/ - Basic project definition
+  > _base.scss - CSS reset declarations
+  > _animations.scss - animations that we will use across the project
+  > _typography.scss - typography related CSS
+  > _utilities.scss - Other generic utilities
+
+2. components/ - Here we have one file for each component. Components are the independent parts that could be included in any page of the project.
+
+3. layout/ - Here we define overall layout of the project
+  > Header related CSS
+  > Footer related CSS
+  > And CSS related to other parts of the layout which are generally common
+
+4. pages/ - Here we have styles for specific pages of the project
+  > We will have a .scss file for each page like _home.scss
+
+5. themes/ - Here we could define different visual themes
+  > This folder is needed if we will declare the themes for a website.
+
+6. abstracts/ - Here we put code that doesn't output any CSS like variables, mixins etc.
+  > _functions.scss - functions
+  > _mixins.scss - mixins
+  > _variables.scss - variables
+
+7. vendors/ - All 3rd party CSS goes in this folder Like the scss files of bootstrap, if we are using it, 3rd-party animations etc.
+
+We are not always going to use all the folders. It depends on the scope and size of the project.
+
+*/
+/*
+SASS CSS-Preprocessor
+
+Various parts of SASS
+
+1. Variables - for reuseable values such a color, font-sizes, spacing etc.
+2. Nesting - to nest selectors inside of one another, allowing us to write less code.
+3. Operators - for mathematical operations right inside of CSS.
+4. Partials and imports - to write CSS in different files and importing them all into one single file.
+5. Mixins - to write reuseable pieces of CSS code
+6. Functions - similar to mixins, with the difference that they produce a value that can then be used.
+7. Extends - to make different selectors inherit declarations that are common to all of them.
+8. Control Directives - for writing complex code using conditionals and loops (not covered in this course). It is used for writing CSS frameworks.
+
+There are 2 syntax of SASS. One is .sass and other is .scss. We will use .scss.
+
+*/
+/* 
+This was just to show that animtions could be used on hover of an element too
+.logo:hover {
+    animation: moveInRight 3s ease-out;
+} */

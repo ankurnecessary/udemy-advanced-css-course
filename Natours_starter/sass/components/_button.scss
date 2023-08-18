@@ -1,0 +1,72 @@
+/*
+:link - initial state of the button
+:visited - We have already clicked the button
+:hover - when user take mouse over and out of the element
+:active - mouse down state of the button
+*/
+
+.btn {
+  &:link,
+  &:visited {
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    /* To position .btn-white:after below .btn  */
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    /* Moves -3px in respect to :link state */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      /*this declaration will affect .btn:after when .btn is hovered*/
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-0.1rem);
+    /* Moves -3px in respect to :link state */
+    box-shadow: 0 1rem 0.6rem rgba($color-black, 0.2);
+  }
+
+  &::after {
+    content: "";
+    /* this attribute is mandatory for :after or :before, otherwise it will not be visible on the screen */
+    display: inline-block;
+    /* Keep it same as original .btn:link */
+    width: 100%;
+    /*This will take the whole width of .btn:link*/
+    height: 100%;
+    /*This will take the whole height of .btn:link*/
+    border-radius: 10rem;
+    /* copied it from .btn:link */
+    transition: all 0.6s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+    /* It will apply the 0% state of moveInBottom animation to the .btn*/
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &:after {
+      background-color: $color-white;
+      position: absolute;
+      /* To position it below .btn:link */
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+}
