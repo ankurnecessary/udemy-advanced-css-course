@@ -1,6 +1,6 @@
 .row {
   max-width: $grid-width;
-  background-color: #eee;
+  // background-color: #eee;
   margin: 0 auto;
 
   // every .row element except the last one
@@ -15,7 +15,7 @@
   // [class^="col-"] Any element whose class attribute's value has "col-"
 
   [class^="col-"] {
-    background-color: orangered;
+    // background-color: orangered;
     float: left;
 
     // .class:not(:last-child) means the rules should apply to all elements except the last element bearing .class. All of them should have same immediate parent element.
